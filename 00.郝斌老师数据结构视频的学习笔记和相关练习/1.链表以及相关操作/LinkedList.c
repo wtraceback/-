@@ -57,6 +57,11 @@ int main() {
 
     printf("链表的长度为：len = %d\n", lengthList(pHead));
 
+    printf("对链表进行排序\n");
+    sortList(pHead);
+    traverseList(pHead);
+    printf("\n");
+
     return 0;
 }
 
@@ -188,4 +193,39 @@ bool deleteList(Node *pHead, int pos, int *val) {
     q = NULL;
 
     return true;
+}
+
+/*
+// 对链表进行排序：冒泡排序，将整个节点以及指向都改变了
+void sortList(Node *pHead) {
+	int n = lengthList(pHead);
+
+    for (int i = 0; i < n - 1; i++) {
+        Node *q = pHead;
+        for (int j = 0; j < n - 1 - i; j++, q=q->next) {
+            if (q->next->value > q->next->next->value) {
+                Node *t = q->next;
+                q->next = t->next;
+                t->next = q->next->next;
+                q->next->next = t;
+            }
+        }
+    }
+}
+*/
+
+// 对链表进行排序：冒泡排序，只改变各个节点里面的值，不改变指向
+void sortList(Node *pHead) {
+	int n = lengthList(pHead);
+
+    for (int i = 0; i < n - 1; i++) {
+        Node *q = pHead->next;
+        for (int j = 0; j < n - 1 - i; j++, q=q->next) {
+            if (q->value > q->next->value) {
+                int value = q->value;
+                q->value = q->next->value;
+                q->next->value = value;
+            }
+        }
+    }
 }
