@@ -16,6 +16,7 @@ void enQueue(Queue *pq, int value);
 void traverseQueue(Queue *pq);
 bool isEmpty(Queue *pq);
 bool outQueue(Queue *pq, int *value);
+int queueCount(Queue *pq);
 
 int main() {
     Queue q;
@@ -35,6 +36,7 @@ int main() {
     enQueue(&q, 11);
     printf("遍历队列：\n");
     traverseQueue(&q);
+    printf("当前队列中有 %d 个元素\n", queueCount(&q));
     printf("\n");
 
     int value;
@@ -49,6 +51,7 @@ int main() {
     }
     printf("遍历队列：\n");
     traverseQueue(&q);
+    printf("当前队列中有 %d 个元素\n", queueCount(&q));
     printf("\n");
 
     if (outQueue(&q, &value)) {
@@ -62,6 +65,7 @@ int main() {
     }
     printf("遍历队列：\n");
     traverseQueue(&q);
+    printf("当前队列中有 %d 个元素\n", queueCount(&q));
     printf("\n");
 
     return 0;
@@ -131,4 +135,11 @@ bool outQueue(Queue *pq, int *value) {
         pq->front = (pq->front + 1) % MAX_QUEUE_SIZE;
         return true;
     }
+}
+
+// 当前队列的有效长度
+int queueCount(Queue *pq) {
+    int len = (pq->rear - pq->front + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
+
+    return len;
 }
