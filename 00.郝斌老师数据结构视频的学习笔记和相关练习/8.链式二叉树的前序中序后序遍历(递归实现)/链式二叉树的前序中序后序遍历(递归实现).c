@@ -7,7 +7,7 @@ typedef struct TreeNode {
     struct TreeNode * rchild;       // 右孩子指针
 } TreeNode;
 
-TreeNode * createBTree();
+TreeNode *createBTree();
 void preOrderTraversal(TreeNode *T);
 void inOrderTraversal(TreeNode *T);
 void postOrderTraversal(TreeNode *T);
@@ -31,7 +31,7 @@ int main() {
 }
 
 // 创建一个链式二叉树
-TreeNode * createBTree() {
+TreeNode *createBTree() {
     TreeNode *pa = (TreeNode *)malloc(sizeof(TreeNode));
     TreeNode *pb = (TreeNode *)malloc(sizeof(TreeNode));
     TreeNode *pc = (TreeNode *)malloc(sizeof(TreeNode));
@@ -43,11 +43,11 @@ TreeNode * createBTree() {
     pa->rchild = pc;
 
     pb->data = 'B';
-    pb->lchild = pb->rchild = NULL;
+    pb->lchild = pd;
+    pb->rchild = pe;
 
     pc->data = 'C';
-    pc->lchild = pd;
-    pc->rchild = pe;
+    pc->lchild = pc->rchild = NULL;
 
     pd->data = 'D';
     pd->lchild = pd->rchild = NULL;

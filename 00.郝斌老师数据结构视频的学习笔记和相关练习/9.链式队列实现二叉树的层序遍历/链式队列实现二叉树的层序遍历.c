@@ -105,7 +105,6 @@ TreeNode *createBTree() {
     TreeNode *pc = (TreeNode *)malloc(sizeof(TreeNode));
     TreeNode *pd = (TreeNode *)malloc(sizeof(TreeNode));
     TreeNode *pe = (TreeNode *)malloc(sizeof(TreeNode));
-    TreeNode *pf = (TreeNode *)malloc(sizeof(TreeNode));
 
     pa->data = 'A';
     pa->lchild = pb;
@@ -115,18 +114,14 @@ TreeNode *createBTree() {
     pb->lchild = pd;
     pb->rchild = pe;
 
+    pc->data = 'C';
+    pc->lchild = pc->rchild = NULL;
+
     pd->data = 'D';
     pd->lchild = pd->rchild = NULL;
 
     pe->data = 'E';
     pe->lchild = pe->rchild = NULL;
-
-    pc->data = 'C';
-    pc->lchild = NULL;
-    pc->rchild = pf;
-
-    pf->data = 'F';
-    pf->lchild = pf->rchild = NULL;
 
     return pa;
 }
